@@ -12,11 +12,16 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+// Import Bootstrap and BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { createApp } from 'vue'
+import store from 'store'
 import App from '../app.vue'
 
 
 const app = createApp(App)
 
 app
+  .use(store)
   .mount('#app')
