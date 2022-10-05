@@ -5,11 +5,12 @@
         <h4>Videos</h4>
       </div>
       <div class="col-md-2">
-        <button class='btn btn-primary'>Add New Video</button>
+        <router-link to="/add-new-video" class="btn btn-primary">Add New Video</router-link>
       </div>
       <hr>
     </main>
   </div>
+   <router-view></router-view>
 </template>
 
 <style scoped>

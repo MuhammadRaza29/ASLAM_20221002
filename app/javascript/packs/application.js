@@ -16,12 +16,13 @@ ActiveStorage.start()
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { createApp } from 'vue'
+import router from 'router/index'
 import store from 'store'
 import App from '../app.vue'
-
 
 const app = createApp(App)
 
 app
+  .use(router)
   .use(store)
   .mount('#app')

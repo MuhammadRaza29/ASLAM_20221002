@@ -1,21 +1,8 @@
 <template>
   <div class='main-app'>
-    <Header />
-    <Videos />
+    <router-view />
   </div>
 </template>
-
-<script>
-import Header from 'components/shared/AppHeader.vue'
-import Videos from 'components/VideosList.vue'
-export default {
-  name: 'App',
-  components: {
-    Header,
-    Videos
-  }
-}
-</script>
 
 <style>
   .main-app {

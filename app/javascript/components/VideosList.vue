@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class='row list'>
     <h6>
       All Videos
@@ -33,8 +34,12 @@
 <script>
   import { VIDEOS_MODULE, FETCH_VIDEOS } from 'store/VideosList/types'
   import { mapActions, mapState } from 'vuex'
+  import Header from 'components/shared/AppHeader.vue'
 
   export default {
+    components: {
+      Header
+    },
     mounted() {
       this.fetchVideos({ page: 1 })
     },
