@@ -22,7 +22,9 @@ import App from '../app.vue'
 
 const app = createApp(App)
 
+document.addEventListener('DOMContentLoaded', () => {
 app
   .use(router)
   .use(store)
   .mount('#app')
+})
