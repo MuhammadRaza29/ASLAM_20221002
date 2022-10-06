@@ -6,5 +6,6 @@ class Video < ApplicationRecord
     attachable.variant :thumb, resize_to_limit: [256, 256]
   end
 
+  validates :title, :video, presence: true
   validates :video, blob: { content_type: ['video/mp4', 'video/mov'], size_range: 1..200.megabytes }
 end
