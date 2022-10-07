@@ -5,5 +5,6 @@ module VideosManager
     prefix :api
 
     mount V1::Videos
+    mount V1::Categories
   end
 end
