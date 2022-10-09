@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
-import VIDEOS from 'store/VideosList/videos'
+import VIDEOS from 'store/Videos/videos'
+import CATEGORIES from 'store/Categories/categories'
 
 export default createStore({
   state: {
@@ -9,6 +10,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    VIDEOS
+    VIDEOS,
+    CATEGORIES
   }
 })

@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import { VIDEOS_MODULE, FETCH_VIDEOS } from 'store/VideosList/types'
+  import { VIDEOS_MODULE, FETCH_VIDEOS, SUCCESSFULLY_ADDED } from 'store/Videos/types'
   import { mapActions, mapState } from 'vuex'
   import Header from 'components/shared/AppHeader.vue'
 
@@ -42,12 +42,16 @@
     },
     mounted() {
       this.fetchVideos({ page: 1 })
+      if(this.successfully_added()==true) {
+        alert('Sucessfully Added!')
+        this.$store.commit(`${VIDEOS_MODULE}/${SUCCESSFULLY_ADDED}`, false)
+      }
     },
     methods: {
       ...mapActions(VIDEOS_MODULE, {
         fetchVideos: FETCH_VIDEOS
       }),
-      ...mapState(VIDEOS_MODULE, ['videos', 'totalVideos', 'totalPages'])
+      ...mapState(VIDEOS_MODULE, ['videos', 'totalVideos', 'totalPages', 'successfully_added'])
     }
   }
 </script>

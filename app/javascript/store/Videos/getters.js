@@ -1,4 +1,4 @@
-import * as VideoTypes from 'store/VideosList/types'
+import * as VideoTypes from 'store/Videos/types'
 
 export default {
   [VideoTypes.GET_VIDEOS]: (state) => {

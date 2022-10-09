@@ -4,7 +4,7 @@ module VideosManager
       resources :videos do
         desc 'Fetch all videos'
         get do
-          videos = Video.page(params[:page])
+          videos = Video.order("id desc").page(params[:page])
           {
             total_pages: videos.total_pages,
             total_videos: videos.total_count,
@@ -14,12 +14,23 @@ module VideosManager
 
         desc 'Add a new video'
         params do
-          requires :title, type: :string, allow_blank: false
-          requires :category_id, type: :Integer
+          requires :title, type: String, allow_blank: false
+          requires :category_id, type: Integer, allow_blank: false
           requires :video, type: File, allow_blank: false
         end
         post do
-          Video.create!(params[:page])
+          params[:video] = {
+            io: File.open(params[:video][:tempfile].path),
+            filename: params[:video][:filename],
+            content_type: params[:video][:type],
+            identify: false
+          }
+          video = Video.new(params)
+          if video.save
+            status 201
+          else
+            error!({ error: video.errors.full_messages.to_sentence }, 400)
+          end
         end
 
         desc 'Get a video'
