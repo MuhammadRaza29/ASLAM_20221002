@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      PGDATABASE: video-manager
+      POSTGRES_USER: ASLAM_20221002
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data
+    ports:
+     - 5454:5432
+  web-app:
+    build: .
+    container_name: web-app
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/video-manager
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+  vuejs:
+    build: .
+    container_name: vuejs
+    command: bash -c "bin/webpack-dev-server"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - web-app

@@ -1,24 +1,73 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project setup with docker
 
-Things you may want to cover:
+### Build docker containers
+```
+docker-compose up --build
+```
 
-* Ruby version
+### Start all docker containers
+```
+docker-compose up
+```
 
-* System dependencies
+### Database creation
+```
+docker-compose exec web-app bundle exec rails db:setup
+```
 
-* Configuration
+### Run Seeds
+```
+docker-compose exec web-app bundle exec rails db:seed
+```
+### Run Database Migration
+```
+docker-compose exec web-app bundle exec rails db:migrate
+```
 
-* Database creation
+### Start rails console
+```
+docker-compose exec web-app bundle exec rails c
+```
 
-* Database initialization
+### Run Rspec
+```
+docker-compose exec web-app bundle exec rspec
+```
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Project setup without docker
 
-* ...
+### Database creation
+```
+rails db:setup
+```
+### Run Seeds
+```
+rails db:seed
+```
+### Run Database Migration
+```
+rails db:migrate
+```
+### Start server
+```
+rails s
+```
+
+```
+### Run webpacker
+```
+yarn start:dev
+```
+
+### Start rails console
+```
+rails c
+```
+### Run Rspec
+```
+rspec
+```
