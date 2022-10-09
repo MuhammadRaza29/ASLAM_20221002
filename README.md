@@ -44,20 +44,22 @@ docker-compose exec web-app bundle exec rspec
 ```
 rails db:setup
 ```
+
 ### Run Seeds
 ```
 rails db:seed
 ```
+
 ### Run Database Migration
 ```
 rails db:migrate
 ```
+
 ### Start server
 ```
 rails s
 ```
 
-```
 ### Run webpacker
 ```
 yarn start:dev
@@ -67,6 +69,7 @@ yarn start:dev
 ```
 rails c
 ```
+
 ### Run Rspec
 ```
 rspec
