@@ -7,7 +7,7 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       PGDATABASE: video-manager
-      POSTGRES_USER: ASLAM_20221002
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       PGDATA: /var/lib/postgresql/data
     ports:
@@ -26,6 +26,8 @@ services:
     build: .
     container_name: vuejs
     command: bash -c "bin/webpack-dev-server"
+    volumes:
+      - .:/video-manager
     ports:
       - "8080:8080"
     depends_on:
